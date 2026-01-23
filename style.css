@@ -12,6 +12,8 @@ body {
 /* Header */
 .site-header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
