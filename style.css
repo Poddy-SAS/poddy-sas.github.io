@@ -48,6 +48,26 @@ body {
   padding: 2rem;
 }
 
+/* Contact Button */
+.contact-button {
+  display: inline-block;
+  border: none;
+  background: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-button img {
+  max-width: 200px;
+  height: auto;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.contact-button img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
 /* Contact Form */
 .contact-form {
   max-width: 600px;
