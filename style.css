@@ -35,6 +35,15 @@ body {
   text-decoration: line;
   font-size: 20px;
   font-weight: bold;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.site-header a:hover {
+  background-color: #d4aa00;
+  color: white;
+  transform: scale(1.05);
 }
 
 /* Hero section */
@@ -48,6 +57,34 @@ body {
   padding: 2rem;
 }
 
+.content-with-image {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.content-image {
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .content-with-image {
+    flex-direction: column;
+  }
+  
+  .content-image {
+    width: 200px;
+    margin: 0 auto;
+  }
+}
+
 /* Contact Button */
 .contact-button {
   display: inline-block;
@@ -58,7 +95,7 @@ body {
 }
 
 .contact-button img {
-  max-width: 150px;
+  max-width: 200px;
   width: 100%;
   height: auto;
   display: block;
