@@ -1,9 +1,54 @@
-body {
-  font-family: Calibri, sans-serif;
-  background: #f4f4f4;
-  margin: 40px;
+/* Basic reset */
+* {
+  box-sizing: border-box;
 }
 
-h1 {
-  color: #2c3e50;
+body {
+  margin: 0;
+  font-family: calibri, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 25px;
+  font-weight: bold;
+  background: white;
+  color: #d4aa00;
+}
+
+.site-logo {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-header a {
+  color: #d4aa00;
+  margin-left: 1rem;
+  text-decoration: line;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Hero section */
+.hero {
+  padding: 4rem 2rem;
+  background: #f4f4f4;
+}
+
+/* Content */
+.content {
+  padding: 2rem;
+}
+
+/* Footer */
+footer {
+  padding: 1rem;
+  text-align: center;
+  background: #eee;
 }
