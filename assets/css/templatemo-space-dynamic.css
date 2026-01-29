@@ -302,6 +302,7 @@ header
     color: #000000;
     line-height: 1.1;
     float: left;
+    padding-top: 10px;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
