@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Calculateur de tarifs - Poddy</title>
+
+<link rel="icon" type="image/png" href="../assets/images/Favicon.png">
+
+<link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/css/templatemo-space-dynamic.css">
+<link rel="stylesheet" href="../assets/css/animated.css">
+
+</head>
+<body>
+
+<header class="header-area header-sticky wow slideInDown">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+
+          <a href="../index.html" class="logo">
+            <h4>Poddy<br><span>Diagnostic immobilier</span></h4>
+          </a>
+
+          <ul class="nav">
+
+<li>
+<a href="../index.html#top">Accueil</a>
+</li>
+
+<li>
+<a href="../index.html#about">Services</a>
+</li>
+
+<li>
+<a href="../index.html#services">A Propos</a>
+</li>
+
+<li>
+<a href="tarifs.html" class="active">Calculateur</a>
+</li>
+
+<li>
+<div class="main-red-button">
+<a href="../index.html#contact">Contactez-Nous</a>
+</div>
+</li>
+
+</ul>
+
+          <a class="menu-trigger">
+            <span>Menu</span>
+          </a>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="page-section">
+<div class="container">
+
+<div class="row justify-content-center">
+<div class="col-lg-8">
+
+<div class="calculator-box">
+
+<h2>Calculateur de tarifs</h2>
+<p>Estimation indicative des diagnostics immobiliers.</p>
+
+<label>Type de bien :</label>
+<select id="propertyType" class="form-control">
+<option value="0">Studio</option>
+<option value="1">T1</option>
+<option value="2">T2</option>
+<option value="3">T3</option>
+<option value="4">T4</option>
+<option value="5">T5</option>
+<option value="6">T6</option>
+<option value="7">T7</option>
+<option value="8">T8</option>
+<option value="9">T9</option>
+<option value="10">T10</option>
+<option value="11">T11</option>
+<option value="12">T12</option>
+<option value="13">T13</option>
+<option value="14">T14</option>
+<option value="15">T15</option>
+<option value="16">T16</option>
+<option value="17">T17</option>
+<option value="18">T18</option>
+<option value="19">T19</option>
+<option value="20">T20</option>
+<option value="21">T21</option>
+<option value="22">T22</option>
+<option value="23">T23</option>
+<option value="24">T24</option>
+</select>
+
+<h3>Type de transaction</h3>
+
+<label>
+<input type="radio" name="transaction" value="vente" checked>
+Vente
+</label>
+
+<label>
+<input type="radio" name="transaction" value="location">
+Location
+</label>
+
+<br><br>
+
+<label>Année du permis de construire :</label>
+<input type="number" id="constructionYear" class="form-control" placeholder="ex: 1985">
+
+<br><br>
+
+<label>Installation gaz > 15 ans ?</label>
+<select id="gasAge" class="form-control">
+<option value="no">Non</option>
+<option value="yes">Oui</option>
+</select>
+
+<br><br>
+
+<label>Installation électrique > 15 ans ?</label>
+<select id="elecAge" class="form-control">
+<option value="no">Non</option>
+<option value="yes">Oui</option>
+</select>
+
+<br><br>
+
+<label>
+<input type="checkbox" id="termite">
+Diagnostic termite (si zone concernée)
+</label>
+
+<p>
+Vérifiez votre commune ici :
+<a href="https://termite.com.fr/rechercher/" target="_blank">
+termite.com.fr
+</a>
+</p>
+
+<hr>
+
+<h3>Localisation du bien</h3>
+
+<label>Code postal :</label>
+<input type="text" id="postalCode" class="form-control" placeholder="ex: 87000" maxlength="5" inputmode="numeric">
+
+<br><br>
+
+<div id="formError" class="form-error"></div>
+
+<div style="text-align:center;">
+<button class="main-red-button" onclick="calculate()">
+Calculer le tarif
+</button>
+</div>
+
+<div id="result"></div>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <p>© Copyright 2026 SAS Poddy</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/owl-carousel.js"></script>
+<script src="../assets/js/animation.js"></script>
+<script src="../assets/js/imagesloaded.js"></script>
+<script src="../assets/js/templatemo-custom.js"></script>
+
+<script src="../assets/js/calculs.js"></script>
+
+</body>
+</html>

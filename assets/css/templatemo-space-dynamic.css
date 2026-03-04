@@ -1611,3 +1611,122 @@ responsive
     margin-left: 0px;
   }
 }
+
+/* ---------------------------------------------
+Calculator styling
+--------------------------------------------- */
+
+/* Calculator container */
+
+.calculator-box{
+background:#fff;
+padding:45px;
+border-radius:14px;
+box-shadow:0 12px 35px rgba(0,0,0,0.06);
+max-width:700px;
+margin:80px auto;
+}
+
+/* Result box */
+
+#result{
+margin-top:30px;
+padding:30px;
+border-radius:12px;
+background:#fafafa;
+border:1px solid #eee;
+display:none;
+box-shadow:0 8px 25px rgba(0,0,0,0.05);
+}
+
+#result h3{
+margin-bottom:15px;
+color:#2a2a2a;
+}
+
+/* Table layout */
+
+#result table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+/* Rows */
+
+#result tr{
+border-bottom:1px solid #eee;
+}
+
+#result tr:last-child{
+border-bottom:none;
+}
+
+/* Cells */
+
+#result td{
+padding:10px 0;
+font-size:16px;
+}
+
+/* Price column */
+
+#result td:last-child{
+text-align:right;
+font-weight:600;
+}
+
+/* Explanation text */
+
+#result small{
+color:#777;
+font-size:13px;
+}
+
+/* Subtotal */
+
+#result tr.subtotal td{
+padding-top:18px;
+font-weight:600;
+}
+
+/* Discount */
+
+#result tr.discount td{
+color:#c99500;
+font-weight:600;
+}
+
+/* Total HT */
+
+#result tr.total-ht td{
+font-weight:700;
+}
+
+/* Final price */
+
+#result tr.total-ttc td{
+font-size:20px;
+font-weight:700;
+color:#D4AA00;
+padding-top:15px;
+}
+/* Form error */
+
+.form-error{
+color:#d9534f;
+font-weight:600;
+margin-top:15px;
+margin-bottom:10px;
+text-align:center;
+}
+
+/* Loading message */
+
+.loading-calculation{
+text-align:center;
+font-weight:600;
+font-size:18px;
+color:#D4AA00;
+padding:25px;
+}
