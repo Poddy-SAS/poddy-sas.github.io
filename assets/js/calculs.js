@@ -289,7 +289,7 @@ Besoin d'un devis précis ou d'un rendez-vous rapide ?
 
 <div class="result-buttons">
 
-<a href="tel:+33986795591" class="main-red-button">
+<a href="tel:+33625584727" class="main-red-button">
 📞 Appeler
 </a>
 
