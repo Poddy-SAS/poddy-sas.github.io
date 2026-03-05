@@ -265,7 +265,7 @@ html += "</table>";
 
 html += `
 <p style="margin-top:15px;font-size:13px;color:#666;">
-Estimation indicatif calculé automatiquement.<br>
+Estimation indicative calculée automatiquement.<br>
 Les obligations réglementaires peuvent varier selon la situation du bien.<br>
 Les prix affichés incluent la TVA au taux en vigueur (20%).
 </p>
@@ -280,17 +280,25 @@ Les prix affichés incluent la TVA au taux en vigueur (20%).
 <li>une remise appliquée selon le nombre de diagnostics (jusqu'à -40%)</li>
 </ul>
 </div>
-`;
 
-html += `
-<div style="margin-top:25px;text-align:center;">
-<p style="margin-bottom:10px;">
-Pour un devis précis, contactez-nous.
+<div class="result-contact">
+
+<p class="result-contact-text">
+Besoin d'un devis précis ou d'un rendez-vous rapide ?
 </p>
+
+<div class="result-buttons">
+
+<a href="tel:+33986795591" class="main-red-button">
+📞 Appeler
+</a>
 
 <a href="../index.html#contact" class="main-red-button">
 Demander un devis
 </a>
+
+</div>
+
 </div>
 `;
 
