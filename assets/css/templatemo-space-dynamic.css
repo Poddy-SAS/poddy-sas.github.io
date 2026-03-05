@@ -1778,3 +1778,54 @@ gap:15px;
 justify-content:center;
 flex-wrap:wrap;
 }
+
+.hero-buttons{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+/* Phone logo behaviour */
+
+.logo-phone{
+display:none;
+}
+
+.logo-phone img{
+height:40px;
+width:auto;
+}
+
+/* When header becomes sticky */
+
+.background-header .logo-text{
+display:none;
+}
+
+.background-header .logo-phone{
+display:inline-block;
+}
+
+/* Phone icon in header */
+
+.logo-phone{
+display:none;
+}
+
+.logo-phone img{
+height:42px;
+width:auto;
+position:relative;
+top:28px;
+}
+
+/* When the header becomes sticky */
+
+.background-header .logo-text{
+display:none;
+}
+
+.background-header .logo-phone{
+display:inline-block;
+}
