@@ -1730,3 +1730,34 @@ font-size:18px;
 color:#D4AA00;
 padding:25px;
 }
+
+@media (max-width: 767px){
+
+.header-area .main-nav .nav.active{
+display:block;
+}}
+
+@media (max-width: 767px){
+
+.header-area .main-nav .nav{
+display:none;
+width:100%;
+background:#fff;
+}
+
+.header-area .main-nav .nav li{
+text-align:center;
+}
+
+.header-area .main-nav .nav li a{
+font-size:18px;
+}
+
+}
+
+.calculator-box button{
+font-size:18px;
+padding:14px 28px;
+width:100%;
+margin-top:10px;
+}
