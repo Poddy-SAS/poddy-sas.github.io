@@ -1829,3 +1829,8 @@ display:none;
 .background-header .logo-phone{
 display:inline-block;
 }
+
+.vat td {
+color:#444;
+font-size:14px;
+}

@@ -5,12 +5,12 @@ const HOME_LON = 1.2458;
 
 const pricingRules = {
   DPE: { base: 100, increment: 15 },
-  GAZ: { base: 80, increment: 10 },
-  ELEC: { base: 80, increment: 10 },
-  PLOMB: { base: 90, increment: 10 },
-  TERMITE: { base: 85, increment: 8 },
+  GAZ: { base: 80, increment: 5 },
+  ELEC: { base: 80, increment: 5 },
+  PLOMB: { base: 80, increment: 10 },
+  TERMITE: { base: 85, increment: 5 },
   AMIANTE: { base: 90, increment: 10 },
-  MESURAGE: { base: 60, increment: 10 }
+  MESURAGE: { base: 70, increment: 5 }
 };
 
 const diagnosticNames = {
@@ -59,9 +59,11 @@ function detectDiagnostics() {
     diagnostics.push({code:"TERMITE", reason:"Zone termite potentielle"});
   }
 
-  if (transaction === "vente") {
-    diagnostics.push({code:"MESURAGE", reason:"Mesurage Loi Carrez (vente)"});
-  }
+  const copro = document.getElementById("copropriete").checked;
+
+if (transaction === "vente" && copro) {
+diagnostics.push({code:"MESURAGE", reason:"Mesurage Loi Carrez (copropriété)"});
+}
 
   if (transaction === "location") {
     diagnostics.push({code:"MESURAGE", reason:"Mesurage Loi Boutin (location)"});
@@ -102,6 +104,8 @@ return postalDB[postalCode];
 }
 
 async function calculate() {
+
+try {
 
 const postalCode = document.getElementById("postalCode").value.trim();
 const constructionYear = document.getElementById("constructionYear").value.trim();
@@ -178,32 +182,43 @@ coords.lon
 
   const distanceCost = distance * 1;
 
-  totalHT += distanceCost;
+const partnerDiscount = document.getElementById("partnerDiscount").checked;
 
-  breakdown.push({
-  name: "Déplacement",
-  reason: "Distance calculée jusqu'à " + city,
-  price: distanceCost
+totalHT += distanceCost;
+
+breakdown.push({
+name: "Déplacement",
+reason: "Distance calculée jusqu'à " + city,
+price: distanceCost
 });
+
+const diagnosticCount = diagnostics.filter(d => d.code !== "MESURAGE").length;
 
   let discountRate = 0;
 
-  if (diagnostics.length === 2) discountRate = 0.10;
-  if (diagnostics.length === 3) discountRate = 0.20;
-  if (diagnostics.length === 4) discountRate = 0.30;
-  if (diagnostics.length >= 5) discountRate = 0.40;
-
+if (diagnosticCount === 2) discountRate = 0.10;
+if (diagnosticCount === 3) discountRate = 0.20;
+if (diagnosticCount === 4) discountRate = 0.30;
+if (diagnosticCount >= 5) discountRate = 0.40;
   const subtotal = totalHT;
 
 const discountAmount = subtotal * discountRate;
 
 totalHT = subtotal - discountAmount;
 
+const vatAmount = totalHT * VAT;
+
   const totalTTC = totalHT * (1 + VAT);
 
   let html = "<h3>Détail du calcul</h3>";
 
 html += "<table>";
+
+breakdown.push({
+name: "ERP (État des risques et pollution)",
+reason: "Inclus gratuitement",
+price: 0
+});
 
 breakdown.forEach(item => {
 
@@ -213,7 +228,7 @@ html += `
 <strong>${item.name}</strong><br>
 <small>${item.reason}</small>
 </td>
-<td>${item.price.toFixed(2)} €</td>
+<td>${item.price === 0 ? "Offert" : item.price.toFixed(2) + " €"}</td>
 </tr>
 `;
 
@@ -238,10 +253,26 @@ if (discountRate > 0) {
 
 }
 
+if (partnerDiscount) {
+
+html += `
+<tr class="discount">
+<td>Remise partenaire - Frais de déplacement offerts</td>
+<td>- ${distanceCost.toFixed(2)} €</td>
+</tr>
+`;
+
+}
+
 html += `
 <tr class="total-ht">
   <td><strong>Total HT</strong></td>
   <td><strong>${totalHT.toFixed(2)} €</strong></td>
+</tr>
+
+<tr class="vat">
+  <td>TVA (20%)</td>
+  <td>${vatAmount.toFixed(2)} €</td>
 </tr>
 
 <tr class="total-ttc">
@@ -254,7 +285,8 @@ html += "</table>";
 
 html += `
 <p style="margin-top:15px;font-size:13px;color:#666;">
-Estimation indicative calculée automatiquement.<br>
+Estimation indicative calculée automatiquement.
+Le tarif définitif peut être ajusté après analyse du bien et confirmation des diagnostics nécessaires.<br>
 Les obligations réglementaires peuvent varier selon la situation du bien.<br>
 Les prix affichés incluent la TVA au taux en vigueur (20%).
 </p>
@@ -296,10 +328,13 @@ document.getElementById("result").innerHTML = html;
 
 }
 
-const postalInput = document.getElementById("postalCode");
+catch(error){
 
-postalInput.addEventListener("input", function () {
+console.error("Calculation error:", error);
 
-  this.value = this.value.replace(/\D/g, "");
+document.getElementById("result").innerHTML =
+"<p style='color:red'>Une erreur est survenue pendant le calcul.</p>";
 
-});
+}
+
+};
