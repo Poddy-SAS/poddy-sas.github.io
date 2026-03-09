@@ -70,45 +70,34 @@ function detectDiagnostics() {
   return diagnostics;
 }
 
-async function getDistance(lat1, lon1, lat2, lon2) {
+function getDistance(lat1, lon1, lat2, lon2){
 
-  const url =
-    `https://router.project-osrm.org/route/v1/driving/` +
-    `${lon1},${lat1};${lon2},${lat2}?overview=false`;
+const R = 6371;
 
-  const response = await fetch(url);
-  const data = await response.json();
+const dLat = (lat2-lat1) * Math.PI/180;
+const dLon = (lon2-lon1) * Math.PI/180;
 
-  if (!data.routes || data.routes.length === 0) {
-    alert("Impossible de calculer la distance");
-    return 0;
-  }
+const a =
+Math.sin(dLat/2) * Math.sin(dLat/2) +
+Math.cos(lat1*Math.PI/180) *
+Math.cos(lat2*Math.PI/180) *
+Math.sin(dLon/2) *
+Math.sin(dLon/2);
 
-  // meters → km
-  return data.routes[0].distance / 1000;
+const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+return R * c;
+
 }
 
-async function getCoordinates(postalCode) {
+function getCoordinates(postalCode){
 
-  const url = `https://nominatim.openstreetmap.org/search?country=France&postalcode=${postalCode}&format=json&addressdetails=1`;
+if(!postalDB[postalCode]){
+alert("Code postal non disponible hors ligne");
+return null;
+}
 
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.length === 0) {
-    alert("Code postal introuvable");
-    return null;
-  }
-
-  return {
-    lat: parseFloat(data[0].lat),
-    lon: parseFloat(data[0].lon),
-    city: data[0].address.city || 
-        data[0].address.town || 
-        data[0].address.village || 
-        data[0].address.municipality || 
-        postalCode
-  };
+return postalDB[postalCode];
 
 }
 
@@ -178,12 +167,12 @@ resultBox.scrollIntoView({
 
   if (!coords) return;
 
-  const distance = await getDistance(
-    HOME_LAT,
-    HOME_LON,
-    coords.lat,
-    coords.lon
-  );
+  const distance = getDistance(
+HOME_LAT,
+HOME_LON,
+coords.lat,
+coords.lon
+);
 
   const city = coords.city;
 
