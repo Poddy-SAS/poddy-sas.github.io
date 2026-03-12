@@ -310,7 +310,7 @@ Besoin d'un devis précis ou d'un rendez-vous rapide ?
 
 <div class="result-buttons">
 
-<a href="#" class="main-red-button" onclick="sendEstimate()">
+<a href="javascript:void(0);" class="main-red-button" onclick="sendEstimate()">
 Transformer cette estimation en devis
 </a>
 
@@ -337,9 +337,25 @@ document.getElementById("result").innerHTML =
 
 function sendEstimate(){
 
-const result = document.getElementById("result").innerText;
+const resultBox = document.getElementById("result");
 
-localStorage.setItem("poddy_estimation", result);
+// clone the result so we can modify it without touching the page
+const cleanResult = resultBox.cloneNode(true);
+
+// remove explanation section
+const explanations = cleanResult.querySelectorAll("ul");
+explanations.forEach(el => el.remove());
+
+// remove unwanted elements
+const links = cleanResult.querySelectorAll("a");
+links.forEach(el => el.remove());
+
+const buttons = cleanResult.querySelectorAll("button");
+buttons.forEach(el => el.remove());
+
+const text = cleanResult.innerText;
+
+localStorage.setItem("poddy_estimation", text);
 
 window.location.href = "../index.html#contact";
 
