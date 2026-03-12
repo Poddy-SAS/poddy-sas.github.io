@@ -310,12 +310,8 @@ Besoin d'un devis précis ou d'un rendez-vous rapide ?
 
 <div class="result-buttons">
 
-<a href="tel:+33625584727" class="main-red-button">
-📞 Appeler
-</a>
-
-<a href="../index.html#contact" class="main-red-button">
-Demander un devis
+<a href="#" class="main-red-button" onclick="sendEstimate()">
+Transformer cette estimation en devis
 </a>
 
 </div>
@@ -338,3 +334,13 @@ document.getElementById("result").innerHTML =
 }
 
 };
+
+function sendEstimate(){
+
+const result = document.getElementById("result").innerText;
+
+localStorage.setItem("poddy_estimation", result);
+
+window.location.href = "../index.html#contact";
+
+}
