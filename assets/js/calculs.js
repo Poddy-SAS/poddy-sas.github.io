@@ -339,21 +339,14 @@ function sendEstimate(){
 
 const resultBox = document.getElementById("result");
 
-// clone the result so we can modify it without touching the page
-const cleanResult = resultBox.cloneNode(true);
+// get only the table that contains the pricing breakdown
+const table = resultBox.querySelector("table");
 
-// remove explanation section
-const explanations = cleanResult.querySelectorAll("ul");
-explanations.forEach(el => el.remove());
+let text = "Détail du calcul\n\n";
 
-// remove unwanted elements
-const links = cleanResult.querySelectorAll("a");
-links.forEach(el => el.remove());
-
-const buttons = cleanResult.querySelectorAll("button");
-buttons.forEach(el => el.remove());
-
-const text = cleanResult.innerText;
+if(table){
+text += table.innerText;
+}
 
 localStorage.setItem("poddy_estimation", text);
 
