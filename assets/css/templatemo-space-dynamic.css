@@ -1797,27 +1797,12 @@ height:40px;
 width:auto;
 }
 
-/* When header becomes sticky */
-
-.background-header .logo-text{
-display:none;
-}
-
-.background-header .logo-phone{
-display:inline-block;
-}
-
 /* Phone icon in header */
 
-.logo-phone{
-display:none;
-}
-
-.logo-phone img{
-height:42px;
-width:auto;
-position:relative;
-top:28px;
+.logo-phone img {
+  height: 42px;
+  width: auto;
+  display: block;
 }
 
 /* When the header becomes sticky */
@@ -1833,4 +1818,62 @@ display:inline-block;
 .vat td {
 color:#444;
 font-size:14px;
+}
+
+.logo-phone {
+  display: block !important;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* IMPORTANT: restore mobile behavior */
+@media (max-width: 767px) {
+  .main-nav {
+    display: block;
+  }
+}
+
+.header-area .main-nav .logo,
+.logo-phone {
+  float: none;
+}
+
+@media (min-width: 768px) {
+  .header-area .main-nav .nav {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-banner .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-banner .col-lg-6:first-child {
+    order: 2; /* text */
+  }
+
+  .main-banner .col-lg-6:last-child {
+    order: 1; /* image */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-banner:before,
+  .main-banner:after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-banner {
+    padding: 100px 0px 60px 0px;
+  }
 }
