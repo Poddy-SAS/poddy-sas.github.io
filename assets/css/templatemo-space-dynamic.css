@@ -1788,8 +1788,10 @@ margin-top:20px;
 
 /* Phone logo behaviour */
 
-.logo-phone{
-display:none;
+.logo-phone {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .logo-phone img{
@@ -1806,14 +1808,6 @@ width:auto;
 }
 
 /* When the header becomes sticky */
-
-.background-header .logo-text{
-display:none;
-}
-
-.background-header .logo-phone{
-display:inline-block;
-}
 
 .vat td {
 color:#444;
